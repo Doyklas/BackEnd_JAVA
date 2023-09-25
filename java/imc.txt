@@ -1,0 +1,94 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.imc;
+import javax.swing.JOptionPane;
+
+/*
+1) Usando a classe JOptionPane para a entrada de dados, elabore uma classe que realize o cálculo
+do peso ideal de uma pessoa. O peso ideal é dado pelo IMC (Indice de Massa Corporal).
+Considere as tabelas a seguir:
+Cálculo do IMC = peso / (altura )2
+ atenção: peso em kg e altura em metros.
+Com base no resultado do IMC e sua idade, imprima na tela o respectivo diagnóstico.
+O programa deverá ser finalizado quando digitado o valor de -1 para o peso.
+ */
+public class IMC {
+
+    public static void main(String[] args) {
+        String idadeS, pesoS, alturaS;
+        float imc, peso, altura;
+        int idade;
+        boolean a = true;
+        int cont = 0;
+        
+        JOptionPane.showMessageDialog(null,"Digite -1 para encerrar o programa");
+        
+        while(a == true){
+            cont++;
+            idadeS = JOptionPane.showInputDialog("Digite a sua idade:");
+            idade = Integer.parseInt(idadeS);
+        
+            if (idade>=20 && idade<=60){
+                pesoS = JOptionPane.showInputDialog("Digite o seu peso em Kg:");
+                peso = Float.parseFloat(pesoS);
+
+                alturaS = JOptionPane.showInputDialog("Digite sua altura em Metros:");
+                altura = Float.parseFloat(alturaS);
+
+                imc = peso /(altura*altura);
+
+                if(imc < 18.5){
+                    JOptionPane.showMessageDialog(null,"Baixo Peso", "Resultado - IMC",JOptionPane.PLAIN_MESSAGE);
+                }
+                else if(imc >= 18.5 && imc <= 24.9 ){
+                    JOptionPane.showMessageDialog(null,"Intervalo Normal", "Resultado - IMC",JOptionPane.PLAIN_MESSAGE);
+                }
+                else if(imc >= 25 && imc <= 29.9 ){
+                    JOptionPane.showMessageDialog(null,"Sobrepeso", "Resultado - IMC",JOptionPane.PLAIN_MESSAGE);
+                }
+                else if(imc >= 30 && imc <= 34.9 ){
+                    JOptionPane.showMessageDialog(null,"Obesidade Classe I", "Resultado - IMC",JOptionPane.PLAIN_MESSAGE);
+                }
+                else if(imc >= 35 && imc <= 39.9 ){
+                    JOptionPane.showMessageDialog(null,"Obesidade Classe II", "Resultado - IMC",JOptionPane.PLAIN_MESSAGE);
+                }
+                else if(imc > 40){
+                    JOptionPane.showMessageDialog(null,"Obesidade Classe III", "Resultado - IMC",JOptionPane.PLAIN_MESSAGE);
+                }     
+            }
+            else if (idade>60){
+                pesoS = JOptionPane.showInputDialog("Digite o seu peso em Kg:");
+                peso = Float.parseFloat(pesoS);
+
+                alturaS = JOptionPane.showInputDialog("Digite sua altura em Metros:");
+                altura = Float.parseFloat(alturaS);
+
+                imc = peso /(altura*altura);
+
+                if(imc < 21.9){
+                    JOptionPane.showMessageDialog(null,"Baixo Peso", "Resultado - IMC",JOptionPane.PLAIN_MESSAGE);
+                }
+                else if(imc >= 22 && imc <= 26.9 ){
+                    JOptionPane.showMessageDialog(null,"Intervalo Normal", "Resultado - IMC",JOptionPane.PLAIN_MESSAGE);
+                }
+                else if(imc >= 27 && imc <= 29.9 ){
+                    JOptionPane.showMessageDialog(null,"Sobrepeso", "Resultado - IMC",JOptionPane.PLAIN_MESSAGE);
+                }
+                else if(imc > 30){
+                    JOptionPane.showMessageDialog(null,"Obesidade", "Resultado - IMC",JOptionPane.PLAIN_MESSAGE);
+                }
+
+            }
+            else if(idade == -1){
+                 JOptionPane.showMessageDialog(null,"Programa Encerrado", "Fim do Programa", JOptionPane.PLAIN_MESSAGE);
+                 System.exit(0);
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Idade Inválida!", "Erro",JOptionPane.WARNING_MESSAGE);
+            }
+        }
+        
+    }
+}

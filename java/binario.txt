@@ -1,0 +1,41 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.binario;
+import javax.swing.JOptionPane;
+
+/*O sistema de numeração decimal (base dez) possui dez possíveis valores (0, 1, 
+2, 3, 4, 5, 6, 7, 8 ou 9) para cada casa numérica. Por outro lado, o sistema de 
+numeração binária (base dois) possui apenas dois valores, representados por 0 e 
+1, para cada casa numérica. Já que o sistema binário é a linguagem interna dos 
+computadores eletrônicos, programadores profissionais devem saber como converter 
+de decimal para binário. A calculadora que vem instalada em seu sistema 
+operacional pode fazer esta conversão por você, mas como programador, é melhor 
+você ter um bom entendimento de como a conversão funciona. Para agilizar esta 
+conversão, você foi designado para elaborar uma classe em Java para resolver 
+este problema. Utilize JOptionPane para a entrada e saída de dados. O programa 
+deverá ser encerrado quando digitado -1 para a entrada de dados.
+ */
+public class Binario {
+
+    public static void main(String[] args) {
+        boolean a = true;
+        int num;
+        String bin;
+        
+        JOptionPane.showMessageDialog(null, "Digite -1 para encerrar o programa");
+        
+        while (a = true){
+            num = Integer.parseInt(JOptionPane.showInputDialog("Digite um  número"));
+            if(num>=0){
+                bin = Integer.toBinaryString(num);
+                JOptionPane.showMessageDialog(null, "Decimal: "+num+"\nBinário: "+bin, "Conversão", JOptionPane.PLAIN_MESSAGE);
+            }
+            else if(num == -1){
+                JOptionPane.showMessageDialog(null,"Programa Encerrado", "Fim do Programa", JOptionPane.PLAIN_MESSAGE);
+                System.exit(0);
+            }
+        }
+    }
+}

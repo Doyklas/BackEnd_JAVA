@@ -1,0 +1,48 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.notas;
+import javax.swing.JOptionPane;
+
+/*
+Usando a classe JOptionPane para a entrada de dados, elabore uma classe que 
+realize o cálculo da média aritmética das notas digitadas pelo usuário. 
+Considere notas válidas de zero a cem. O programa será encerrado quando o 
+usuário digitar o valor de -1 para a nota. Neste momento, deverá ser mostrado na 
+tela a média calculada das notas informadas pelo usuário, como segue:
+Imprimir na tela
+ */
+public class Notas {
+
+    public static void main(String[] args) {
+        boolean a = true;
+        String notaS;
+        int nota;
+        int soma = 0;
+        int cont = 0;
+        float media;
+        
+        JOptionPane.showMessageDialog(null,"Digite -1 para encerrar o programa");
+        
+        while(a == true){
+            notaS = JOptionPane.showInputDialog("Digite sua nota");
+            nota = Integer.parseInt(notaS);
+            
+            if(nota>= 0 && nota<=100){
+                soma+=nota;
+                cont++;
+            }
+            else if(nota == -1){
+               a = false;
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Nota inválida");
+            }
+        }
+        
+        media = soma/cont;
+        
+        JOptionPane.showMessageDialog(null,"Quantidade de Notas: " + cont +"\nMédia Aritmética das Notas: "+media, "Resultado do Cálculo da Média das Notas", JOptionPane.PLAIN_MESSAGE);
+    }
+}

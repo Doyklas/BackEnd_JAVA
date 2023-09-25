@@ -1,0 +1,77 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.nasa;
+import javax.swing.JOptionPane;
+
+/* Uma instituição oferece um curso que prepara os candidatos a obterem uma 
+licença internacional para Engenheiro Aeroespacial Pleno, dando direito ao aluno 
+aprovado a uma vaga para trabalhar diretamente na administração da agência da 
+NASA, localizada em Washington (EUA). No último ano, grande parte dos alunos que 
+concluíram esse curso fizeram o exame. Naturalmente, a instituição quer saber 
+qual o desempenho de seus alunos nesta prova. Você foi contratado para escrever 
+um programa que resumisse os resultados. Para tanto, você recebeu uma lista dos 
+alunos, que ao lado de cada nome, está indicando com 1 (se o aluno passou no 
+exame), 2 (se o aluno foi reprovado) e 3 (se o aluno faltou na prova). Seu 
+programa deve analisar os resultados do exame desta forma:
+
+a. dê entrada a cada resultado do teste (isto é: 1, 2 ou 3). Exiba a mensagem 
+“Inserir resultado” na tela toda vez que o programa solicitar o resultado de 
+outro candidato.
+b. Conte o número de resultados de cada tipo.
+c. Exiba um resumo dos resultados do teste para indicar o número de alunos que 
+foram aprovados, o número de alunos que foram reprovados e quantos faltaram na 
+prova.
+d. Se mais de 70% dos alunos que se inscreveram no curso foram aprovados, 
+imprima a mensagem “Curso Aprovado e Reconhecido”, caso contrário, imprima a 
+mensagem “EXAME REALIZADO”.
+Use a classe JOptionPane para a entrada de dados. Não esqueça de validar as 
+entradas (somente 1, 2 ou 3).
+ */
+public class NASA {
+
+    public static void main(String[] args) {
+        boolean a = true;
+        int nota, cont = 0, cont1 = 0,cont2 = 0, cont3 = 0, Total;
+        float aprov;
+    
+       JOptionPane.showMessageDialog(null, "Digite -1 para encerrar o programa");
+        
+        while (a == true){
+            cont++;
+            nota = Integer.parseInt(JOptionPane.showInputDialog("Inserir resultado"));
+            
+            if(nota >= 1 && nota <= 3){
+                if (nota == 1){
+                    cont1+=1;
+                }
+                else if(nota == 2){
+                    cont2+=1;
+                }
+                else if(nota == 3){
+                    cont3=1;
+                }
+            }
+            else if(nota == -1){
+                a=false;
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Digite uma nota válida!");
+            }
+         }
+        
+        Total = cont1 + cont2 + cont3;
+        aprov = (cont1*100)/Total;
+        
+        if(aprov>=70){
+            JOptionPane.showMessageDialog(null,"Curso Aprovado e Reconhecido","Estado Curso",JOptionPane.PLAIN_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"EXAME REALIZADO","Estado Curso",JOptionPane.PLAIN_MESSAGE);
+        }
+        
+       JOptionPane.showMessageDialog(null,"Aprovados: "+cont1+"\nReprovados: "+cont2+"\nAusentes: "+cont3,"Resultado",JOptionPane.PLAIN_MESSAGE);
+       
+    }
+}
