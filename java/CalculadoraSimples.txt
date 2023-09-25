@@ -1,0 +1,74 @@
+package com.mycompany.calculadorasimples;
+import javax.swing.JOptionPane;
+import javax.swing.*;
+//import java.util.Objects;
+
+
+/**
+ *
+ * @author CT Desenvolvimento
+ */
+public class CalculadoraSimples {
+
+     public static void main(String[] args) {
+        //int n1, n2, soma, sub, mult;
+        float resultado = 0;
+        
+        JTextField num1 = new JTextField();
+        JTextField num2 = new JTextField();
+        
+        Object[] itens = { "+", "-", "*","/" };
+        JComboBox<Object> operatorComboBox = new JComboBox<>(itens);
+        
+        JPanel panel = new JPanel();
+
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        
+        panel.add(new JLabel("Digite o primeiro número:"));
+        panel.add(num1);
+        
+        panel.add(new JLabel("Selecione a operação:"));
+        panel.add(operatorComboBox);
+
+        panel.add(new JLabel("Digite o segundo número::"));
+        panel.add(num2);
+ 
+        int result = JOptionPane.showConfirmDialog(null, panel, "Calculadora",JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+
+            String v1 = num1.getText();
+            String v2 = num2.getText();
+            
+            int n1 = Integer.parseInt(v1);
+            int n2 = Integer.parseInt(v2);
+            
+        String operacao = (String) operatorComboBox.getSelectedItem();
+        
+        if(operacao.equals("+")){
+            resultado = n1 + n2;
+            JOptionPane.showMessageDialog(null, "Resultado: " + resultado, "Resultado da Operação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(operacao.equals("-")){
+            resultado = n1 - n2;
+            JOptionPane.showMessageDialog(null, "Resultado: " + resultado, "Resultado da Operação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(operacao.equals("*")){
+            resultado = n1 * n2;
+            JOptionPane.showMessageDialog(null, "Resultado: " + resultado, "Resultado da Operação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(operacao.equals("/")){
+            if(n2 == 0){ 
+                JOptionPane.showMessageDialog(null, " Oparação Invalida \n NÃO É POSSIVEL DIVIDIR POR ZERO");
+            }
+            else{
+                resultado = n1/n2;
+                JOptionPane.showMessageDialog(null, "Resultado: " + resultado, "Resultado da Operação", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        
+       
+    }
+    
+}
+}

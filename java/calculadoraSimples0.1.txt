@@ -1,0 +1,43 @@
+package com.mycompany.calculadorasimples;
+import javax.swing.JOptionPane;
+//import java.util.Objects;
+
+
+/**
+ *
+ * @author CT Desenvolvimento
+ */
+public class CalculadoraSimples {
+
+    public static void main(String[] args) {
+        System.out.println("Calculadora");
+        JOptionPane.showMessageDialog(null, "Calculadora");
+        int n1,n2, soma, sub, mult;
+        float resultado = 0, div;
+        
+        n1 = Integer.parseInt(JOptionPane.showInputDialog("Digite o Primeiro Numero "));
+        Object[] itens = {"+", "-", "*", "/"};
+        Object selectValue = JOptionPane.showInputDialog(null, "Selecione uma Opção", "Opção", JOptionPane.PLAIN_MESSAGE, null, itens, itens[0]);
+        n2 = Integer.parseInt(JOptionPane.showInputDialog("Digite o Segundo Numero "));
+        if(selectValue.equals("+")){
+            soma = n1 + n2;
+            resultado = soma;
+        }
+        else if(selectValue.equals("-")){
+            sub = n1 - n2;
+            resultado = sub;
+        }
+        else if(selectValue.equals("*")){
+            mult = n1 * n2;
+            resultado = mult;
+        }
+        else if(selectValue.equals("/")){
+            div = n1 / n2;
+            resultado = div;
+        }
+        
+        JOptionPane.showMessageDialog(null, "Resultado:" + resultado);
+        
+        
+    }
+}

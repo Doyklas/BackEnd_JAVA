@@ -1,0 +1,115 @@
+package com.mycompany.calculadora1;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+/**
+ *
+ * @author CT Desenvolvimento
+ */
+public class Calculadora1 {
+
+        public static void main(String[] args) {
+            
+        JFrame frame = new JFrame("Calculadora Simples");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 200);
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(4, 2));
+        JTextField num1 = new JTextField();
+        JTextField num2 = new JTextField();
+
+        String[] operadores = {"+", "-", "*", "/"};
+        
+        JComboBox<String> operatorComboBox = new JComboBox<>(operadores);
+ 
+        JLabel resultadoLabel = new JLabel("Resultado:");
+
+        JButton calcularButton = new JButton("Calcular");
+
+        calcularButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+
+                try {
+
+                    double n1 = Double.parseDouble(num1.getText());
+
+                    double n2 = Double.parseDouble(num2.getText());
+
+                    String operacao = (String) operatorComboBox.getSelectedItem();
+
+                    double resultado = calcular(n1, n2, operacao);
+
+                    resultadoLabel.setText("Resultado: " + resultado);
+
+                } catch (NumberFormatException ex) {
+
+                    resultadoLabel.setText("Resultado: Erro");
+
+                }
+
+            }
+
+        });
+        panel.add(new JLabel("Digite o primeiro número:"));
+
+        panel.add(num1);
+
+        panel.add(new JLabel("Selecione a operação:"));
+
+        panel.add(operatorComboBox);
+
+        panel.add(new JLabel("Digite o segundo número:"));
+
+        panel.add(num2);
+
+        panel.add(resultadoLabel);
+
+        panel.add(calcularButton);
+
+        frame.add(panel);
+
+        frame.setVisible(true);
+
+    }
+
+ 
+
+    private static double calcular(double n1, double n2, String operacao) {
+
+        switch (operacao) {
+
+            case "+":
+
+                return n1 + n2;
+
+            case "-":
+
+                return n1 - n2;
+
+            case "*":
+
+                return n1 * n2;
+
+            case "/":
+
+                if (n2 != 0) {
+
+                    return n1 / n2;
+
+                } else {
+
+                    return Double.NaN; // Tratar divisão por zero como NaN (indefinido)
+
+                }
+
+            default:
+
+                return Double.NaN; // Operação inválida
+
+        }
+
+    }
+}
